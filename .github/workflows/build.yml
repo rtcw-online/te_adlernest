@@ -1,0 +1,16 @@
+name: Build
+on: [push]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Create te_adlernest.pk3
+        run: 7z a -tzip "te_adlernest_b1.pk3" "@te_adlernest.txt"
+      - name: 'Upload te_adlernest_b1'
+        uses: actions/upload-artifact@v2
+        with:
+          name: "te_adlernest_b1"
+          path: |
+            te_adlernest_b1.pk3
